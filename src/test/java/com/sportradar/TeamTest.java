@@ -15,8 +15,8 @@ public class TeamTest extends AbstractTest {
     @Test
     public void checkTeamWithName() {
         Team team = new Team();
-        team.setName(getTeamExample());
+        team.setName(getNameTeamExample());
 
-        assertEquals(team.getName(), getTeamExample());
+        assertEquals(team.getName(), getNameTeamExample());
     }
 }

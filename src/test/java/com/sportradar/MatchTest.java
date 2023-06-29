@@ -32,13 +32,13 @@ public class MatchTest  extends AbstractTest {
 
     private Team getHome() {
         Team teamHome = new Team();
-        team.setName(getTeamHome());
+        team.setName(getNameTeamHome());
         return teamHome;
     }
 
     private Team getAway() {
         Team teamAway = new Team();
-        team.setName(getTeamAway());
+        team.setName(getNameTeamAway());
         return teamAway;
     }
 
@@ -47,10 +47,10 @@ public class MatchTest  extends AbstractTest {
         Match match = new Match();
 
         Team teamAway = new Team();
-        team.setName(getTeamAway());
+        team.setName(getNameTeamAway());
 
         Team teamHome = new Team();
-        team.setName(getTeamHome());
+        team.setName(getNameTeamHome());
 
         match.addAway(teamAway);
         match.addHome(teamHome);
