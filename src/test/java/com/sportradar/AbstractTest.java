@@ -23,4 +23,27 @@ public abstract class AbstractTest {
     public String getNameTeamAway() {
         return NAME_TEAM_AWAY;
     }
+
+    protected Team getTeamHome() {
+        Team teamHome = new Team();
+        team.setName(getNameTeamHome());
+        return teamHome;
+    }
+
+    protected Team getTeamAway() {
+        Team teamAway = new Team();
+        team.setName(getNameTeamAway());
+        return teamAway;
+    }
+
+    protected Match getMatch() {
+        Match match = new Match();
+
+        Team teamAway = getTeamAway();
+        Team teamHome = getTeamHome();
+
+        match.addAway(teamAway);
+        match.addHome(teamHome);
+        return match;
+    }
 }

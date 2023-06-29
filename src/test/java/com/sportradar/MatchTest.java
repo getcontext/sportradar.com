@@ -14,46 +14,14 @@ public class MatchTest  extends AbstractTest {
 
     @Test
     public void createMatchWithTeams() {
-        Match match = new Match();
-
-        Team teamAway = getAway();
-
-        Team teamHome = getHome();
-
-        match.addAway(teamAway);
-        match.addHome(teamHome);
-
-
-
-
+        Match match = getMatch();
 
         assertTrue(match instanceof Match); //team is not null (Team)
     }
 
-    private Team getHome() {
-        Team teamHome = new Team();
-        team.setName(getNameTeamHome());
-        return teamHome;
-    }
-
-    private Team getAway() {
-        Team teamAway = new Team();
-        team.setName(getNameTeamAway());
-        return teamAway;
-    }
-
     @Test
     public void createMatchWithTeamsAndDefaultScore() {
-        Match match = new Match();
-
-        Team teamAway = new Team();
-        team.setName(getNameTeamAway());
-
-        Team teamHome = new Team();
-        team.setName(getNameTeamHome());
-
-        match.addAway(teamAway);
-        match.addHome(teamHome);
+        Match match = getMatch();
 
         match.setScore(0,0);
 
