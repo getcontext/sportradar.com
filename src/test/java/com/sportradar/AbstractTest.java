@@ -9,4 +9,8 @@ public abstract class AbstractTest {
     public void setup() {
 
     }
+
+    public String getExampleTeam() {
+        return EXAMPLE_TEAM;
+    }
 }
