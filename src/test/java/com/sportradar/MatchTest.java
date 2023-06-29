@@ -2,6 +2,7 @@ package com.sportradar;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class MatchTest  extends AbstractTest {
@@ -16,7 +17,13 @@ public class MatchTest  extends AbstractTest {
     public void createMatchWithTeams() {
         Match match = getMatch();
 
-        assertTrue(match instanceof Match); //team is not null (Team)
+        assertEquals(match.getTeamHome().getName(), getNameTeamHome());
+        assertEquals(match.getTeamAway().getName(), getNameTeamAway());
+    }
+
+    @Test(expected = Exception.class)
+    public void createMatchWithSameTeams() {
+
     }
 
     @Test
@@ -25,7 +32,13 @@ public class MatchTest  extends AbstractTest {
 
         match.setScore(0,0);
 
+        assertEquals(0, match.getScoreHome());
+        assertEquals(0, match.getScoreAway());
 
-        assertTrue(match instanceof Match); //team is not null (Team)
+        match.setScoreHome(0);
+        match.setScoreAway(0);
+
+        assertEquals(0, match.getScoreHome());
+        assertEquals(0, match.getScoreAway());
     }
 }
