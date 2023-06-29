@@ -9,7 +9,7 @@ public class TeamTest extends AbstractTest {
     public void createTeam() {
         Team team = new Team();
 
-        assertTrue(team, team instanceof Team); //team is not null (Team)
+        assertTrue(team instanceof Team); //team is not null (Team)
     }
 
     @Test
