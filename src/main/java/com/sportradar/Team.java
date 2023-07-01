@@ -7,15 +7,15 @@ public class Team {
 
     }
 
-    public Team(String nameTeamExample) {
-        setName(nameTeamExample);
+    public Team(String nameTeam) {
+        setName(nameTeam);
     }
 
-    public void setName(String nameTeamExample) {
-        if (nameTeamExample == null) {
+    public void setName(String nameTeam) {
+        if (nameTeam == null) {
             throw new IllegalArgumentException();
         }
-        name = nameTeamExample;
+        name = nameTeam;
     }
 
     public String getName() {
