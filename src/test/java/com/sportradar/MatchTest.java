@@ -33,7 +33,7 @@ public class MatchTest  extends AbstractTest {
     }
 
     @Test
-    public void createMatchWithTeamsAndDefaultScore() {
+    public void createMatchWithDefaultScore() {
         Match match = getMatch();
 
         match.setScore(0,0);
@@ -46,5 +46,29 @@ public class MatchTest  extends AbstractTest {
 
         assertEquals(0, match.getScoreHome());
         assertEquals(0, match.getScoreAway());
+    }
+
+    @Test
+    public void createMatchWithScoreAndTotalIsFinished() {
+        Match match = getMatch();
+
+        match.setScore(0,0);
+
+        match.start();
+
+        assertEquals(false, match.isFinished());
+
+//        match.setScoreHome(9);
+//        match.setScoreAway(2);
+        match.update(9,2);
+
+        assertEquals(9, match.getScoreHome());
+        assertEquals(2, match.getScoreAway());
+        assertEquals(11, match.getTotal());
+
+        match.stop();
+
+        assertEquals(true, match.isFinished());
+
     }
 }
