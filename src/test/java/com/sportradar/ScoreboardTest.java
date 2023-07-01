@@ -33,13 +33,32 @@ public class ScoreboardTest  extends AbstractTest {
 
         Match match = getMatch();
         match.start();
+        match.setScore(0,2);
         scoreboard.addMatch(match);
         assertEquals(1, scoreboard.getMatches().size());
 
-//        scoreboard.endMatch(0);
         scoreboard.endMatch(match);
 
         assertEquals(0, scoreboard.getMatches().size());
+    }
+
+    @Test
+    public void endMatchNotSame() {
+        Scoreboard scoreboard = new Scoreboard();
+
+        Match match = getMatch();
+        match.start();
+        match.setScore(0,2);
+        scoreboard.addMatch(match);
+        assertEquals(1, scoreboard.getMatches().size());
+
+        Match match2 = getMatch2();
+        match2.start();
+        match2.setScore(2,0);
+
+        scoreboard.endMatch(match2);
+
+        assertEquals(1, scoreboard.getMatches().size());
     }
 
     @Test

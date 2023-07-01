@@ -2,6 +2,7 @@ package com.sportradar;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Stream;
 
 public class Scoreboard {
     ConcurrentHashMap<Long, Match> matches = new ConcurrentHashMap<Long, Match>();
@@ -24,21 +25,31 @@ public class Scoreboard {
     }
 
     public void endMatch(Match match) {
-        matches.values().remove(match);
+//        matches.values().remove(match);
+        matches.forEach((key, value) -> {
+            if (value.equals(match)) {
+                matches.remove(key);
+            }
+        });
     }
 
     public ArrayList<Match> getSummary() {
-        ArrayList<Match> toSort = new ArrayList<>();
-        for (Map.Entry<Long, Match> entry : matches.entrySet()) {
-            toSort.add(entry.getValue());
-        }
+        ArrayList<Match> sorted = new ArrayList<>();
+//        Stream<Map.Entry<Long, Match>> sorted = matches.entrySet().stream().sorted();
+//        for (Map.Entry<Long, Match> entry : matches.entrySet()) {
+//            toSort.add(entry.getValue());
+//        }
 
-        toSort.sort(null);
+        matches.forEach((key, value) -> {
+            sorted.add(value);
+        });
 
-        for (Match entry : toSort) {
+        sorted.sort(null);
+
+        for (Match entry : sorted) {
             System.out.println(entry.getTeamHome().getName() + " " + entry.getScoreHome() + " - " + entry.getTeamAway().getName() + " " + entry.getScoreAway() );
         }
 
-        return toSort;
+        return sorted;
     }
 }
