@@ -27,8 +27,8 @@ public class MatchTest  extends AbstractTest {
 
         Team teamAway = getTeamAway();
 
-        match.addTeamAway(teamAway);
-        match.addTeamHome(teamAway);
+        match.setTeamAway(teamAway);
+        match.setTeamHome(teamAway);
 
     }
 

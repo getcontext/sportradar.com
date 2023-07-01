@@ -42,8 +42,8 @@ public abstract class AbstractTest {
         Team teamAway = getTeamAway();
         Team teamHome = getTeamHome();
 
-        match.addTeamAway(teamAway);
-        match.addTeamHome(teamHome);
+        match.setTeamAway(teamAway);
+        match.setTeamHome(teamHome);
 
         return match;
     }
