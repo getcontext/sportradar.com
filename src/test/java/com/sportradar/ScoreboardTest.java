@@ -2,6 +2,9 @@ package com.sportradar;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -35,7 +38,7 @@ public class ScoreboardTest  extends AbstractTest {
         scoreboard.addMatch(match);
 
         scoreboard.endMatch(0);
-//        scoreboard.endMatch(match);
+        scoreboard.endMatch(match);
 
         assertEquals(0, scoreboard.getMatches().size());
     }
@@ -49,7 +52,7 @@ public class ScoreboardTest  extends AbstractTest {
         match.start();
         scoreboard.addMatch(match);
 
-        scoreboard.getSummary();
+        ArrayList<Match> summary = scoreboard.getSummary();
 
         assertEquals(1, scoreboard.getMatches().size());
     }
