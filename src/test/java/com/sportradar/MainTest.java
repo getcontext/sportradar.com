@@ -22,7 +22,7 @@ public class MainTest extends AbstractTest {
         Main m = new Main();
         m.run();
 
-        assertTrue(m.isRunning(), true);
+        assertTrue(m.isRunning() == true);
 
         assertEquals(m.getScoreboard().getSummary().size(), 5);
 

@@ -11,6 +11,7 @@ public class Scoreboard {
     }
 
     public ConcurrentHashMap<Integer, Match> getMatches() {
+        return matches;
     }
 
     public void endMatch(int i) {
