@@ -32,7 +32,9 @@ public class Scoreboard {
         for (Map.Entry<Long, Match> entry : matches.entrySet()) {
             toSort.add(entry.getValue());
         }
+
         toSort.sort(null);
+
         for (Match entry : toSort) {
             System.out.println(entry.getTeamHome().getName() + " " + entry.getScoreHome() + " - " + entry.getTeamAway().getName() + " " + entry.getScoreAway() );
         }
