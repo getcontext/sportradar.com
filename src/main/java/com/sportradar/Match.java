@@ -1,6 +1,8 @@
 package com.sportradar;
 
-public class Match {
+import java.util.Comparator;
+
+public class Match implements Comparator<Match>, Comparable<Match> {
     private Team teamAway;
     private Team teamHome;
 
@@ -58,6 +60,7 @@ public class Match {
             return;
         }
 
+        setScore(0,0);
         //timeStart and timeStop can be added here as a separate threads
     }
 
@@ -75,5 +78,15 @@ public class Match {
 
     public void stop() {
         this.isFinished = true;
+    }
+
+    @Override
+    public int compare(Match o1, Match o2) {
+        return Integer.compare(o2.getTotal(), o1.getTotal());
+    }
+
+    @Override
+    public int compareTo(Match o) {
+        return Integer.compare(o.getTotal(), getTotal());
     }
 }

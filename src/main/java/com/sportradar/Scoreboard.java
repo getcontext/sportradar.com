@@ -1,16 +1,22 @@
 package com.sportradar;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Scoreboard {
-    ConcurrentHashMap<Integer, Match> matches = new ConcurrentHashMap<Integer, Match>();
+    ConcurrentHashMap<Long, Match> matches = new ConcurrentHashMap<Long, Match>();
 
     public void addMatch(Match match) {
+        Long started = new Date().getTime();
+        matches.put(started, match);
+
+        try {
+            Thread.sleep(1); //1 milisecond is minimum threshold
+        } catch (InterruptedException e) {
+        }
     }
 
-    public ConcurrentHashMap<Integer, Match> getMatches() {
+    public ConcurrentHashMap<Long, Match> getMatches() {
         return matches;
     }
 
@@ -18,9 +24,19 @@ public class Scoreboard {
     }
 
     public void endMatch(Match match) {
+        matches.values().remove(match);
     }
 
     public ArrayList<Match> getSummary() {
-        return null;
+        ArrayList<Match> toSort = new ArrayList<>();
+        for (Map.Entry<Long, Match> entry : matches.entrySet()) {
+            toSort.add(entry.getValue());
+        }
+        toSort.sort(null);
+        for (Match entry : toSort) {
+            System.out.println(entry.getTeamHome().getName() + " " + entry.getScoreHome() + " - " + entry.getTeamAway().getName() + " " + entry.getScoreAway() );
+        }
+
+        return toSort;
     }
 }
