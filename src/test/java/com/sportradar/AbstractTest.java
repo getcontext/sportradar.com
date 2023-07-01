@@ -25,15 +25,15 @@ public abstract class AbstractTest {
     }
 
     protected Team getTeamHome() {
-        Team teamHome = new Team();
+        Team team = new Team();
         team.setName(getNameTeamHome());
-        return teamHome;
+        return team;
     }
 
     protected Team getTeamAway() {
-        Team teamAway = new Team();
+        Team team = new Team();
         team.setName(getNameTeamAway());
-        return teamAway;
+        return team;
     }
 
     protected Match getMatch() {
