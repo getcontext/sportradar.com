@@ -2,6 +2,7 @@ package com.sportradar;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class MainTest extends AbstractTest {
@@ -12,7 +13,7 @@ public class MainTest extends AbstractTest {
 //    e. Argentina 3 - Australia 1
 
     @Test
-    public void createScoreboard() {
+    public void run() {
 //        Match match, Team team;
 //        Scoreboard scoreboard = new Scoreboard();
 //        team = new Team();
@@ -23,8 +24,7 @@ public class MainTest extends AbstractTest {
 
         assertTrue(m.isRunning(), true);
 
-        m.getScoreboard().getSummary();
-
+        assertEquals(m.getScoreboard().getSummary().size(), 5);
 
     }
 }
