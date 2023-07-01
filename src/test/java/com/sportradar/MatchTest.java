@@ -10,7 +10,7 @@ public class MatchTest  extends AbstractTest {
     public void createMatch() {
         Match match = new Match();
 
-        assertTrue(match instanceof Match); //team is not null (Team)
+        assertTrue(match instanceof Match); //match is not null (Match)
     }
 
     @Test
@@ -21,8 +21,14 @@ public class MatchTest  extends AbstractTest {
         assertEquals(match.getTeamAway().getName(), getNameTeamAway());
     }
 
-    @Test(expected = Exception.class)
+    @Test(expected = IllegalArgumentException.class)
     public void createMatchWithSameTeams() {
+        Match match = new Match();
+
+        Team teamAway = getTeamAway();
+
+        match.addTeamAway(teamAway);
+        match.addTeamHome(teamAway);
 
     }
 

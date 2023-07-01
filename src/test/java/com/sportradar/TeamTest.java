@@ -13,10 +13,25 @@ public class TeamTest extends AbstractTest {
     }
 
     @Test
-    public void checkTeamWithName() {
+    public void checkTeamWithNameSetter() {
         Team team = new Team();
         team.setName(getNameTeamExample());
 
         assertEquals(team.getName(), getNameTeamExample());
+    }
+    @Test
+    public void checkTeamWithNameConstructor() {
+        Team team = new Team(getNameTeamExample());
+        assertEquals(team.getName(), getNameTeamExample());
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void checkTeamWithNullNameSetter() {
+        Team team = new Team();
+        team.setName(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void checkTeamWithNullNameConstructor() {
+        Team team = new Team(null);
     }
 }
