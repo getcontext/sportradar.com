@@ -8,11 +8,14 @@ public class Team {
     }
 
     public Team(String nameTeamExample) {
-        this.name = nameTeamExample;
+        setName(nameTeamExample);
     }
 
     public void setName(String nameTeamExample) {
-        name=nameTeamExample;
+        if (nameTeamExample == null) {
+            throw new IllegalArgumentException();
+        }
+        name = nameTeamExample;
     }
 
     public String getName() {
