@@ -2,7 +2,7 @@ package com.sportradar;
 
 import java.util.Comparator;
 
-public class Match implements Comparator<Match>, Comparable<Match> {
+public class Match implements Matchable {
     private Team teamAway;
     private Team teamHome;
 
@@ -11,6 +11,7 @@ public class Match implements Comparator<Match>, Comparable<Match> {
 
     private boolean isFinished = false;
 
+    @Override
     public void setTeamAway(Team teamAway) {
         if(this.teamHome != null && this.teamHome.equals(teamAway)) {
             throw new IllegalArgumentException();
@@ -18,6 +19,7 @@ public class Match implements Comparator<Match>, Comparable<Match> {
         this.teamAway = teamAway;
     }
 
+    @Override
     public void setTeamHome(Team teamHome) {
         if(this.teamAway != null && this.teamAway.equals(teamHome)) {
             throw new IllegalArgumentException();
@@ -25,36 +27,44 @@ public class Match implements Comparator<Match>, Comparable<Match> {
         this.teamHome = teamHome;
     }
 
+    @Override
     public Team getTeamHome() {
         return teamHome;
     }
 
+    @Override
     public Team getTeamAway() {
         return teamAway;
     }
 
+    @Override
     public void setScore(int home, int away) {
         this.scoreHome = home;
         this.scoreAway = away;
     }
 
+    @Override
     public int getScoreHome() {
         return scoreHome;
     }
 
+    @Override
     public int getScoreAway() {
         return scoreAway;
     }
 
+    @Override
     public void setScoreHome(int i) {
         scoreHome = i;
     }
 
 
+    @Override
     public void setScoreAway(int i) {
         scoreAway = i;
     }
 
+    @Override
     public void start() {
         if (isFinished) {
             return;
@@ -64,18 +74,22 @@ public class Match implements Comparator<Match>, Comparable<Match> {
         //timeStart and timeStop can be added here as a separate threads
     }
 
+    @Override
     public boolean isFinished() {
         return isFinished;
     }
 
+    @Override
     public void update(int i, int i1) {
         setScore(i, i1);
     }
 
+    @Override
     public int getTotal() {
         return scoreHome + scoreAway; //could be separate field
     }
 
+    @Override
     public void stop() {
         this.isFinished = true;
     }
