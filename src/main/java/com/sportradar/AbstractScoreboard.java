@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class AbstractScoreboard {
+public abstract class AbstractScoreboard {
     ConcurrentHashMap<Long, Match> matches = new ConcurrentHashMap<Long, Match>();
 
     public void addMatch(Match match) {
@@ -33,23 +33,5 @@ public class AbstractScoreboard {
         });
     }
 
-    public ArrayList<Match> getSummary() {
-        ArrayList<Match> sorted = new ArrayList<>();
-//        Stream<Map.Entry<Long, Match>> sorted = matches.entrySet().stream().sorted();
-//        for (Map.Entry<Long, Match> entry : matches.entrySet()) {
-//            toSort.add(entry.getValue());
-//        }
-
-        matches.forEach((key, value) -> {
-            sorted.add(value);
-        });
-
-        sorted.sort(null);
-
-        for (Match entry : sorted) {
-            System.out.println(entry.getTeamHome().getName() + " " + entry.getScoreHome() + " - " + entry.getTeamAway().getName() + " " + entry.getScoreAway());
-        }
-
-        return sorted;
-    }
+    public abstract ArrayList<Match> getSummary();
 }
