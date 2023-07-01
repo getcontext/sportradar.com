@@ -10,10 +10,16 @@ public class Match {
     private boolean isFinished = false;
 
     public void setTeamAway(Team teamAway) {
+        if(this.teamHome != null && this.teamHome.equals(teamAway)) {
+            throw new IllegalArgumentException();
+        }
         this.teamAway = teamAway;
     }
 
     public void setTeamHome(Team teamHome) {
+        if(this.teamAway != null && this.teamAway.equals(teamHome)) {
+            throw new IllegalArgumentException();
+        }
         this.teamHome = teamHome;
     }
 
@@ -48,7 +54,7 @@ public class Match {
     }
 
     public void start() {
-        if(isFinished) {
+        if (isFinished) {
             return;
         }
 

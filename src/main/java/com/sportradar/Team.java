@@ -21,4 +21,11 @@ public class Team {
     public String getName() {
         return name;
     }
+
+    public boolean equals(Team team) {
+        if(this.name == team.getName()) {
+            return true;
+        }
+        return false;
+    }
 }
