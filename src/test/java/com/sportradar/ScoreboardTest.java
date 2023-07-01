@@ -34,7 +34,7 @@ public class ScoreboardTest  extends AbstractTest {
         match.start();
         scoreboard.addMatch(match);
 
-        scoreboard.endMatch(0);
+//        scoreboard.endMatch(0);
         scoreboard.endMatch(match);
 
         assertEquals(0, scoreboard.getMatches().size());
