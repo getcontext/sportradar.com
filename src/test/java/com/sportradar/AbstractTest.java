@@ -44,6 +44,7 @@ public abstract class AbstractTest {
 
         match.addTeamAway(teamAway);
         match.addTeamHome(teamHome);
+
         return match;
     }
 }
