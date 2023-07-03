@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class AbstractScoreboard {
-    ConcurrentHashMap<Long, Match> matches = new ConcurrentHashMap<Long, Match>();
+    protected ConcurrentHashMap<Long, Match> matches = new ConcurrentHashMap<Long, Match>();
 
     public void addMatch(Match match) {
         Long started = new Date().getTime();
@@ -25,12 +25,12 @@ public abstract class AbstractScoreboard {
     }
 
     public void endMatch(Match match) {
-//        matches.values().remove(match);
-        matches.forEach((key, value) -> {
-            if (value.equals(match)) {
-                matches.remove(key);
-            }
-        });
+        matches.values().remove(match);
+//        matches.forEach((key, value) -> {
+//            if (value.equals(match)) {
+//                matches.remove(key);
+//            }
+//        });
     }
 
     public abstract ArrayList<Match> getSummary();
